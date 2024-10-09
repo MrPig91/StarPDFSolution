@@ -1,0 +1,179 @@
+﻿<UserControl x:Class="StarPDFSolutionWPF.Views.CombineFilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StarPDFSolutionWPF.Views"
+             xmlns:genViews="clr-namespace:StarPDFSolutionWPF.Views.GeneralElementViews"
+             xmlns:vm="clr-namespace:StarPDFSolutionWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid AllowDrop="True"
+          DragEnter="Grid_DragEnter"
+          DragLeave="Grid_DragLeave">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="dragDropGrid" Grid.Row="0" Grid.RowSpan="6" Panel.ZIndex="2"
+              Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border x:Name="combineFilesBorder" 
+                    Style="{StaticResource DragDropBorder}"
+                    BorderBrush="{StaticResource BorderDragDropColor}" CornerRadius="5" BorderThickness="5" Margin="0"
+                    Drop="combineFilesBorder_Drop">
+                <Border.Background>
+                    <SolidColorBrush Color="{StaticResource SecondaryDarkColor}" Opacity=".75" />
+                </Border.Background>
+                <Grid x:Name="combineFilesGrid">
+                    <TextBlock Text="Combine Files..." HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="35" FontWeight="SemiBold" Foreground="{StaticResource SecondaryForegroundBrush}"/>
+                </Grid>
+            </Border>
+            <Border x:Name="addFilesBorder" Grid.Row="1" 
+                    Style="{StaticResource DragDropBorder}"
+                    BorderBrush="{StaticResource BorderDragDropColor}" CornerRadius="5" BorderThickness="5" Margin="0"
+                    Drop="addFilesBorder_Drop">
+                <Border.Background>
+                    <SolidColorBrush Color="{StaticResource SecondaryDarkColor}" Opacity=".75" />
+                </Border.Background>
+                <Grid x:Name="addFilesGrid">
+                    <TextBlock Text="Add Files..." TextAlignment="Center" VerticalAlignment="Center"
+                       FontSize="35" FontWeight="SemiBold" Foreground="{StaticResource SecondaryForegroundBrush}"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource GeneralButton}" Margin="2.5"
+                   CommandParameter="{Binding Path=SelectedSourceFile}"
+                    ToolTip="Move Up"
+                   Command="{Binding Path=MoveUpCommand}" Padding="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="\Images\up.png" Height="25" Margin="5 0 5 0"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Style="{StaticResource GeneralButton}" Margin="2.5"
+                    CommandParameter="{Binding Path=SelectedSourceFile}"
+                    ToolTip="Move Down"
+                    Command="{Binding Path=MoveDownCommand}" Padding="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="\Images\down.png" Height="25" Margin="5 0 5 0"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Style="{StaticResource GeneralButton}" Margin="2.5"
+                CommandParameter="{Binding SourceFiles}"
+                ToolTip="Enable / Disable Natural Sorting"
+                Command="{Binding Path=NaturalSortCommand}" Padding="5">
+                <Grid>
+                    <Image Source="\Images\sort.png" Height="25" Margin="5 0 5 0"/>
+                    <Image Source="\Images\cancel-line.png" Height="25" Margin="5 0 5 0"
+                           Visibility="{Binding Path=IsNaturalSortEnabled, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="3" Style="{StaticResource GeneralButton}" Margin="2.5"
+                CommandParameter="{Binding Path=SelectedSourceFile}"
+                    ToolTip="Remove Selected File"
+                Command="{Binding Path=RemoveCommand}" Padding="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="\Images\remove.png" Height="25" Margin="5 0 5 0"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="4" Style="{StaticResource GeneralButton}" Margin="2.5"
+                CommandParameter="{Binding SourceFiles}"
+                    ToolTip="Remove All Files"
+                Command="{Binding Path=ClearCommand}" Padding="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Source="\Images\clear.png" Height="25" Margin="5 0 5 0"/>
+                </StackPanel>
+            </Button>
+            <Button Content="Select Files" Grid.Column="5" Style="{StaticResource GeneralButton}" Margin="2.5"
+                Command="{Binding Path=SelectFilesCommand}" Padding="5" FontSize="17"></Button>
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="files to combine" Foreground="{StaticResource SecondaryForegroundBrush}" FontSize="20" Panel.ZIndex="1" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity=".15"
+                   Visibility="{Binding Path=SourceFilesView.Count, Converter={StaticResource InverseCountToVisibilityConverter}}"/>
+        <ListBox Grid.Row="1" Style="{StaticResource GeneralListBox}" Margin="5"
+                 IsSynchronizedWithCurrentItem="True"
+                 ItemsSource="{Binding Path=SourceFilesView}"
+                 SelectedItem="{Binding Path=SelectedSourceFile}">
+        </ListBox>
+
+        <Expander Grid.Row="2" Style="{StaticResource GeneralExpander}" IsExpanded="False" Margin="0 0 0 10">
+            <Expander.Header>
+                <TextBlock Text="Options" FontSize="15" FontWeight="SemiBold" />
+            </Expander.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+
+                <WrapPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                    <CheckBox Content="Remove Comments"
+                        IsChecked="{Binding Path=Options.RemoveComments}"
+                        Grid.Column="0" Style="{StaticResource GeneralCheckbox}" />
+                    <CheckBox Content="Remove Bookmarks" Margin="10 5 5 5"
+                        IsChecked="{Binding Path=Options.RemoveBookmarks}"
+                        Grid.Column="0" Style="{StaticResource GeneralCheckbox}" />
+                </WrapPanel>
+
+
+                <genViews:LabeledSeparator Text="After Creation"  Grid.ColumnSpan="3" Grid.Row="2" Margin="5" FontSize="12"/>
+                <WrapPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <CheckBox Content="Open Combined File"
+                          IsChecked="{Binding Path=Options.OpenFile}"
+                          Style="{StaticResource GeneralCheckbox}" />
+                    <CheckBox Content="Delete Source Files" Margin="10 5 5 5"
+                          IsChecked="{Binding Path=Options.DeleteSourceFiles}"
+                          Style="{StaticResource GeneralCheckbox}" />
+                </WrapPanel>
+            </Grid>
+        </Expander>
+
+        <Button Grid.Row="3" Style="{StaticResource GeneralButton}"
+                Command="{Binding Path=CombineFilesCommand}" Margin="5 0 5 5" Padding="5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="\Images\merge.png" Height="25" Margin="0 0 10 0"/>
+                <TextBlock Text="Combine" VerticalAlignment="Center" FontSize="17"/>
+            </StackPanel>
+        </Button>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <Label Content="Output File:" Foreground="{StaticResource ForegroundBrush}" FontWeight="Bold"/>
+            <TextBlock VerticalAlignment="Center">           
+                <Hyperlink NavigateUri="{Binding Path=OutputFile.FilePath}" RequestNavigate="Hyperlink_RequestNavigate"
+                           Foreground="{StaticResource ForegroundBrush}">
+                    <TextBlock Text="{Binding OutputFile.FilePath}" />
+                </Hyperlink>
+            </TextBlock>
+
+        </StackPanel>
+
+        <genViews:ProgressBarView DataContext="{Binding Path=Progress}" Grid.Row="5" Margin="5" FontSize="15"
+                                  Visibility="{Binding Converter={StaticResource NullToVisibilityConverter}}" />
+    </Grid>
+</UserControl>

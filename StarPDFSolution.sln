@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarPDFSolutionLibrary", "StarPDFSolutionLibrary\StarPDFSolutionLibrary.csproj", "{7BAF2E18-DBBB-48A8-BE53-998C0D45AD59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarPDFSolutionWPF", "StarPDFSolutionWPF\StarPDFSolutionWPF.csproj", "{5CFF9049-6A9D-4F7D-9ACF-177A05B89788}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "StarPDFSolutionWPFSetup", "StarPDFSolutionWPFSetup\StarPDFSolutionWPFSetup.vdproj", "{CBDB526C-7069-4E27-9329-16982F06FD6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BAF2E18-DBBB-48A8-BE53-998C0D45AD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAF2E18-DBBB-48A8-BE53-998C0D45AD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAF2E18-DBBB-48A8-BE53-998C0D45AD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAF2E18-DBBB-48A8-BE53-998C0D45AD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CFF9049-6A9D-4F7D-9ACF-177A05B89788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CFF9049-6A9D-4F7D-9ACF-177A05B89788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CFF9049-6A9D-4F7D-9ACF-177A05B89788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CFF9049-6A9D-4F7D-9ACF-177A05B89788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBDB526C-7069-4E27-9329-16982F06FD6D}.Debug|Any CPU.ActiveCfg = Debug
+		{CBDB526C-7069-4E27-9329-16982F06FD6D}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3500E627-E288-4E6A-B944-213CEE0CD435}
+	EndGlobalSection
+EndGlobal
