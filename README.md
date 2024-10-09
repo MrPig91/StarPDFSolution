@@ -6,7 +6,7 @@ You can download the latest version from my payhip site - https://payhip.com/b/Y
 
 ## How to use - Video
 
-![Combine PDFs For Free]([https://www.youtube.com/watch?v=gLtjTUwCHMA&t])
+[![Video](https://img.youtube.com/vi/gLtjTUwCHMA&t/maxresdefault.jpg)](https://www.youtube.com/watch?v=gLtjTUwCHMA&t)
 
 ## How to use - Text
 
