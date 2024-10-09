@@ -6,8 +6,7 @@ You can download the latest version from my payhip site - https://payhip.com/b/Y
 
 ## How to use - Video
 
-[![Video](![image](https://github.com/user-attachments/assets/27bdb2b1-8159-4198-99e5-7a54ed1c9d7a)
-)](https://www.youtube.com/watch?v=gLtjTUwCHMA&t)
+[![image](https://github.com/user-attachments/assets/7cc0b37d-74f5-4156-b570-08813bdbf196)](https://www.youtube.com/watch?v=gLtjTUwCHMA&t)
 
 ## How to use - Text
 
