@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Star PDF Solution"
-        "ProductCode" = "8:{4615F9EB-CB57-469D-B23F-6FDF8F13158E}"
-        "PackageCode" = "8:{254F99A9-5077-4555-A925-FA27BC433D4D}"
+        "ProductCode" = "8:{65D4E4D2-00DB-413B-945F-C43503E72A0D}"
+        "PackageCode" = "8:{82D601F5-9484-4DC1-8079-195270CEB29E}"
         "UpgradeCode" = "8:{EC3B6A95-6A70-4F08-BCBC-9C962B28DD30}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.4"
+        "ProductVersion" = "8:1.0.6"
         "Manufacturer" = "8:Sirius Software Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -522,6 +522,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CB1EBEA61AFB4E5A9BC143AF8AB72F1E"
+            {
+            "Name" = "8:Star PDF Solution"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_98EF66F7422C4EBCAFCA2FAF7194D41E"
+            "Folder" = "8:_64F9116D5F784F57A3A160AAA90F7E2D"
+            "WorkingFolder" = "8:_9DAB53950AAB4E758A81752D0BD73BF3"
+            "Icon" = "8:_C5102669398A4FF68AC284B89542B1E0"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FB36BF3875514655A17744598BEC3923"
             {
             "Name" = "8:StarPDFSolution"
@@ -1193,7 +1207,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_98EF66F7422C4EBCAFCA2FAF7194D41E"
             {
-            "SourcePath" = "8:..\\StarPDFSolutionWPF\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\StarPDFSolutionWPF\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9DAB53950AAB4E758A81752D0BD73BF3"

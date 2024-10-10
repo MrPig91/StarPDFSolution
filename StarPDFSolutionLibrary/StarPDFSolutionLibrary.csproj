@@ -4,6 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>1.0.1</Version>
+    <PackageProjectUrl>https://github.com/MrPig91/StarPDFSolution</PackageProjectUrl>
+    <Title>Star PDF Solution Library</Title>
+    <Company>SysDeskDev</Company>
+    <Authors>Syrius Cleveland</Authors>
+    <Description>A cross platform PDF library for merging and splitting PDF files using PDFSharp.</Description>
   </PropertyGroup>
 
   <ItemGroup>
